@@ -9,7 +9,7 @@ Sending notification from Zabbix server to the Telegram.
 [Configuration](#Configuration)
 
 ### Key Features
-- [x] Sending graphs and latest values ***In same message*
+- [x] Sending graphs and latest values **In same message**
 - [x] Flexible template configuration in message body.
 - [x] Обработка быстрых команд ботом <img alt="AppVeyor" src="https://img.shields.io/static/v1?label=status&message=beta&color=yellow?logo=appveyor">
 - [x] Отправка показателей по запросу от бота <img alt="AppVeyor" src="https://img.shields.io/static/v1?label=status&message=beta&color=yellow?logo=appveyor">
@@ -31,52 +31,52 @@ Sending notification from Zabbix server to the Telegram.
 sudo su - zabbix
 ```
 
-* Перейдем в директорию
+* Chage directory to default alertscript directory.
 ```bash
 cd /usr/lib/zabbix/alertscripts/
 ```
 
-* С клонируем свежий релиз с GitHub
+* Get latest version of the bot from GitHub.
 ```bash
 git clone https://github.com/xxsokolov/Zabbix-Notification-Telegram.git .
 ```
 
-* Создадим виртуальное окружение
+* Create virtual environment
 ```bash
 virtualenv venv --python=python3
 ``` 
-или 
+or 
 ```bash
 python3 -m venv venv
 ``` 
 
-* Активируем виртуальное окружение
+* Activate virtual environment that was created
 ```bash
 source venv/bin/activate
 ```
 
-* Установим библиотеки 
+* Install all required library 
 ```bash
 pip install -r .requirements
 deactivate
 ```
 
-* Копируем файл конфигурации:
+* Creating own configuration from example configuration file:
 ```bash
 cp zbxTelegram_config.example.py zbxTelegram_config.py
 ```
 
-* Выдаем права
+* Set right ownership for files to avoid any permission issue.
 ```bash
 chown -R zabbix:zabbix zbxTelegram.py zbxTelegram_config.py zbxTelegram_files/ 
 ```
 
-* Разрешим выполнять файл скрипта
+* Set execution permission
 ```bash
 chmod +x zbxTelegram.py
 ```
 
-* Редактируем конфигурационный файл 
+* Open configuration file and adjust all settings that you need.
 ```bash
 vim zbxTelegram_config.py
 ```
@@ -85,25 +85,25 @@ vim zbxTelegram_config.py
 <a name="Configuration"><h3>Configuration</h2></a>
 
 
-**Настройка zbxTelegram_config.py**
+**Settings that can be changed in zbxTelegram_config.py**
 
 
-`tg_proxy` = Отправка через прокси True/False; по-умолчанию True
+`tg_proxy` = Sending notification thru proxy True/False; By default 'True'
 
-`tg_proxy_server`  = Адрес прокси сервера
+`tg_proxy_server`  = Proxy server address.
 
-`tg_token` = token to access the Telegram API
+`tg_token` = Telegram API  token.
 
-`zabbix_api_url` = Путь до Zabbix (бэкслеш '/' в конце обязателен)
+`zabbix_api_url` = Zabbix server URL. '/' in the end is mandatory. For example if you are using default Zabbix installation you URL will be like this 'http://zabbix-server-name.example/zabbix/'
 
-`zabbix_api_login` = Логин пользователя с минимум правами чтения на нужные группы, откуда мы хотим получать оповещения
+`zabbix_api_login` = User that will be used for integration. User should have at least read permission on group/object to get notification from it.
 
-`zabbix_api_pass` = Пароль
-
-
-**Настройка Media types**
+`zabbix_api_pass` = Password for user
 
 
+**Zabbix Server Media types configuration**
+To make notification work you need crate your own 'Media type'. Go to Zabbix Server web page, then navigate to Administration -> Media type. 
+And create new 'Media type' with same settings as described below:
 _Name_: ZNT
 
 _Type_: Script
@@ -196,8 +196,8 @@ _Script parameters_:
 `<tags></tags>` - передача списка тэгов из триггера {EVENT.TAGS}
 
 
-#### Нотиф:
+#### Sample notification:
 
 <img src="https://imgur.com/ayKo62v.png">
 
-###### Жду всех в **Telegram**: https://t.me/ZbxNTg
+###### Official Telegram channel where you can get support **Telegram**: https://t.me/ZbxNTg
