@@ -1,6 +1,6 @@
 # Zabbix-Notification-Telegram
 
-Отправка оповещений из Zabbix в  Telegram
+Sending notification from Zabbix server to the Telegram.
 
 [Plans](#Plans)
 
@@ -9,15 +9,15 @@
 [Configuration](#Configuration)
 
 ### Key Features
-- [x] Отправка графиков и последних значений **в одном сообщении**
-- [x] Гибкая настройка шаблона в теле сообщения
+- [x] Sending graphs and latest values ***In same message*
+- [x] Flexible template configuration in message body.
 - [x] Обработка быстрых команд ботом <img alt="AppVeyor" src="https://img.shields.io/static/v1?label=status&message=beta&color=yellow?logo=appveyor">
 - [x] Отправка показателей по запросу от бота <img alt="AppVeyor" src="https://img.shields.io/static/v1?label=status&message=beta&color=yellow?logo=appveyor">
 - [x] Передача данных из экшена XML разметкой
 - [x] Формирование списка линков в теле сообщения
 - [x] Формирование списка тэгов в теле сообщения
 - [x] Emoji мапинг статуса и важности события
-- [x] Наложение ватермарки на изображение
+- [x] Adding watermark on images.
 - [x] Формирование и обновление кэшфайла (privat, group -> supergroup)
 
 
@@ -26,7 +26,7 @@
 
 <a name="Installation"><h3>Installation</h2></a>
 
-* Становимся пользователем, от имени которого будет работать скрипт на системном уровне (по-умолчанию `zabbix`)
+* Login as user who will be run script. By default, Zabbix server run all scripts under user 'zabbix'. You can check what user is using now by running 'ps axu|grep zabbix' 
 ```bash
 sudo su - zabbix
 ```
