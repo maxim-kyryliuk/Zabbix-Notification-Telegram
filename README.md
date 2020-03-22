@@ -136,64 +136,64 @@ _Script parameters_:
 
 * Default message
 
-Для настройки оповещения используется XML разметка _(Исходные данные Вы найдете в actions.example)_
+For notification configuration XML is used to configure alerts _(Examplse can be find in file actions.example)_
+For start you can just copy content of the _actions.example_ file directly to the `Default message` field
 
-В самом простом рабочем варианте контент из файла _actions.example_ копируется в настройку оповещения, поле `Default message`
-
-Она состоит из основных секций:
+Default message filed contain next section:
 
 ```xml
 <body>
    <messages>
-      Текст сообщения
+      Message text
    </messages>
 </body>
 ``` 
 
 ```xml
 <settings> 
-       Настройки
+       [Settings description](#Settings description) 
 </settings>
 ``` 
 
 <img src="https://imgur.com/m6DosDL.png">
 
-**Тестирование**
+**Test your setup**
 
-* Из консоли
+* From server console
 ```bash
 ./zbxTelegram.py @username test test
 
 [2019-11-26 11:48:37,723] - PID:73794 - main() - zbxTelegram.py:311 - INFO: Send to @username action: test
 [2019-11-26 11:48:38,653] - PID:73794 - send_messages() - zbxTelegram.py:290 - INFO: Send photo to @username (00000000)
 ```
-* Из media type
+* FRom Zabbix Web interface (Media type)
+Use test in subject and in message field.
+
 <img src="https://imgur.com/6ej0d40.png">
 
+<a name="Settings description"><h3>Settings description</h2></a>
 
-**Описание настроек**
+`<graphs>True</graphs>` - Add graph to the message. Value type (True|False)
 
-`<graphs></graphs>` - прикреплять график (True\False)
+`<graphlinks>True</graphlinks>` - URL link to history page. Value type (True|False)
 
-`<graphlinks>True</graphlinks>` - прикрепить ссылку url на History (True\False)
+`<triggerlinks>True</triggerlinks>` - URL link to the triger page. Value type (True|False)
 
-`<triggerlinks>True</triggerlinks>` - прикрепить ссылку url из триггера (True\False)
+`<tag>True</tag>` - Add tag to the message. Value type (True|False)
 
-`<tag>True</tag>` - прикрепить теги (True\False)
+`<graphs_period></graphs_period>` - Graph time frame. (in seconds)
 
-`<graphs_period></graphs_period>` - период графика в секундах
+`<itemid></itemid>` - Add item ID to the message. {ITEM.ID1}
 
-`<itemid></itemid>` - передача itemid {ITEM.ID1}
+`<triggerid></triggerid>` - Add trigger ID to the message. {TRIGGER.ID}
 
-`<triggerid></triggerid>` - передача triggerid {TRIGGER.ID}
+`<eventid></eventid>`- Add event ID to the message. {EVENT.ID}
 
-`<eventid></eventid>`- передача eventid {EVENT.ID}
+`<title></title>` - Graph name. {HOST.HOST} - {EVENT.NAME}
 
-`<title></title>` - заголовок графика {HOST.HOST} - {EVENT.NAME}
+`<triggerurl></triggerurl>` - Send URL from trigger {TRIGGER.URL}
 
-`<triggerurl></triggerurl>` - передача url из триггера {TRIGGER.URL}
-
-`<tags></tags>` - передача списка тэгов из триггера {EVENT.TAGS}
+`<tags></tags>` - Send tags list from trigger {EVENT.TAGS}
 
 
 #### Sample notification:
