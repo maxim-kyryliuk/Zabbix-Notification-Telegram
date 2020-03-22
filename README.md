@@ -149,7 +149,8 @@ Default message filed contain next section:
 </body>
 ``` 
 
-[Settings description](#Settings description) 
+[Settings description](#Settings_description) 
+
 ```xml
 <settings> 
        Settings description.
@@ -172,7 +173,7 @@ Use test in subject and in message field.
 
 <img src="https://imgur.com/6ej0d40.png">
 
-<a name="Settings description"><h3>Settings description</h2></a>
+<a name="Settings_description"><h3>Settings description</h2></a>
 
 `<graphs>True</graphs>` - Add graph to the message. Value type (True|False)
 
