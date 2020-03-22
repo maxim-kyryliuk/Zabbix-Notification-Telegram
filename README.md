@@ -149,9 +149,10 @@ Default message filed contain next section:
 </body>
 ``` 
 
+[Settings description](#Settings description) 
 ```xml
 <settings> 
-       [Settings description](#Settings description) 
+       Settings description.
 </settings>
 ``` 
 
